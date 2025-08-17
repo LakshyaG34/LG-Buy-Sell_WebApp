@@ -5,7 +5,7 @@ import bcrypt from "bcryptjs";
 export async function POST(req) {
   try {
     await db();
-    const { email, password } = req.json();
+    const { email, password } = await req.json();
     const user = await User.findOne({ email });
     if (!user) {
       return new Response(JSON.stringify({ error: "User not found" }), {

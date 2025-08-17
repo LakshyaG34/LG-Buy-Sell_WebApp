@@ -18,7 +18,7 @@ const Navbar = () => {
             </Link>
             <div className="hidden md:flex flex-row gap-3 px-4">
               <Link
-                href="/login"
+                href="/signin"
                 className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 hover:bg-purple-900 hover:text-white hover:border-white"
               >
                 Login

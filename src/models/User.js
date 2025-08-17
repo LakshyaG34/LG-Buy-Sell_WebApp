@@ -18,4 +18,5 @@ const userSchema = mongoose.Schema({
     }
 },{Timestamp:true});
 
-export default mongoose.model.user || mongoose.model("User", userSchema);
+// Use `User` with capital U
+export default mongoose.models.User || mongoose.model("User", userSchema);
