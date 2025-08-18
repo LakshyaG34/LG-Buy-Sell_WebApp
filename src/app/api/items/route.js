@@ -5,7 +5,7 @@ export async function GET() {
   try {
     await db();
     const items = await Item.find({});
-    return new REPONSE(JSON.stringify(items), { status: 200 });
+    return new Response(JSON.stringify(items), { status: 200 });
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {
       status: 500,
@@ -19,7 +19,7 @@ export async function POST(req) {
     const { image, price, description } = await req.json();
 
     if (!image || !price) {
-      return new RESPONSE(JSON.stringify({ error: "Missing field" }), {
+      return new Response(JSON.stringify({ error: "Missing field" }), {
         status: 400,
       });
     }
@@ -27,9 +27,9 @@ export async function POST(req) {
     const newItem = new Item({ image, price, description });
     await newItem.save();
 
-    return new REPONSE(JSON.stringify(newItem), { status: 201 });
+    return new Response(JSON.stringify(newItem), { status: 201 });
   } catch (err) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: err.message }), {
       status: 500,
     });
   }

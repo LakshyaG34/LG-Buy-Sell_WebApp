@@ -10,30 +10,37 @@ export default function AddItem() {
   const [err, setErr] = useState(null);
 
   const router = useRouter();
+
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setErr(null);
+
     try {
       const res = await fetch("/api/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ image, price }),
       });
+
       if (!res.ok) {
-        const err = await res.json();
-        throw new Error(err.error || "Failed to add item");
+        const errorData = await res.json();
+        throw new Error(errorData.error || "Failed to add item");
       }
+
       setImage("");
       setPrice("");
       setDescription("");
-      res.push("/home");
+
+      // ✅ navigate properly
+      router.push("/home");
     } catch (err) {
       setErr(err.message);
     } finally {
       setLoading(false);
     }
   };
+
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
       <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
