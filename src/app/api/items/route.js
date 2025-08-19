@@ -5,10 +5,14 @@ export async function GET() {
   try {
     await db();
     const items = await Item.find({});
-    return new Response(JSON.stringify(items), { status: 200 });
+    return new Response(JSON.stringify(items), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (error) {
-    return new Response(JSON.stringify({ error: error.message }), {
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
+      headers: { "Content-Type": "application/json" },
     });
   }
 }
@@ -18,19 +22,31 @@ export async function POST(req) {
     await db();
     const { image, price, description } = await req.json();
 
-    if (!image || !price) {
+    if (!image || !price || !description) {
       return new Response(JSON.stringify({ error: "Missing field" }), {
         status: 400,
+        headers: { "Content-Type": "application/json" },
       });
+      
     }
 
-    const newItem = new Item({ image, price, description });
+    const newItem = new Item({
+      image,
+      price: Number(price),
+      description,
+    });
+    console.log(newItem);
+    
     await newItem.save();
 
-    return new Response(JSON.stringify(newItem), { status: 201 });
+    return new Response(JSON.stringify(newItem), {
+      status: 201,
+      headers: { "Content-Type": "application/json" },
+    });
   } catch (err) {
-    return new Response(JSON.stringify({ error: err.message }), {
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
       status: 500,
+      headers: { "Content-Type": "application/json" },
     });
   }
 }

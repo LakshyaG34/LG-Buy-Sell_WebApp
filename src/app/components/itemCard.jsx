@@ -1,21 +1,24 @@
-import React from "react"
+import React from "react";
 import Image from "next/image";
 
-const ItemCard = ({image, price}) =>
-{
-    return(
-        <div className="relative w-64 h-80 rounded-xl overflow-hidden shadow-lg">
-            <Image
-            src={image}
-            alt="Item"
-            width={50}
-            height={50}
-            className="w-full h-full object-cover"/>
-            <div className="absolute bottom-2 left-2 bg-block bg-opacity-60 text-white px-3 py-1 rounded-md text-sm font-semibold">
-                Rs{price}
-            </div>
-        </div>
-    )
-}
+const ItemCard = ({ image, price, description }) => {
+  return (
+    <div className="relative w-64 h-80 rounded-xl overflow-hidden shadow-lg">
+      <Image
+        src={image}
+        alt="Item"
+        width={256}
+        height={320}
+        className="w-full h-full object-cover"
+      />
+
+      {/* Overlay container */}
+      <div className="absolute bottom-0 left-0 w-full bg-black bg-opacity-60 text-white p-3 space-y-1">
+        <div className="text-sm font-semibold">₹{price}</div>
+        <div className="text-xs">{description}</div>
+      </div>
+    </div>
+  );
+};
 
 export default ItemCard;

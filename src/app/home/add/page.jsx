@@ -20,7 +20,7 @@ export default function AddItem() {
       const res = await fetch("/api/items", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image, price }),
+        body: JSON.stringify({ image, price, description }),
       });
 
       if (!res.ok) {
@@ -68,6 +68,17 @@ export default function AddItem() {
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="500"
+              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+              required
+            />
+          </div>
+          <div>
+            <label className="block text-sm font-medium mb-1">Description</label>
+            <textarea
+              type="text"
+              value={description}
+              onChange={(e) => setDescription(e.target.value)}
+              placeholder="Demo"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
