@@ -1,10 +1,12 @@
 "use client";
 import { useState } from "react";
 import { useRouter } from "next/navigation";
+import { useAuth } from "@/context/authContext";
 
 export default function SigninPage() {
   const [form, setForm] = useState({ email: "", password: "" });
   const router = useRouter();
+  const {login} = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -15,6 +17,7 @@ export default function SigninPage() {
     });
 
     if (res.ok) {
+      login();
       router.push("/home");
     } else {
       const data = await res.json();
@@ -89,7 +92,7 @@ export default function SigninPage() {
                     placeholder="Enter your Password"
                     required=""
                     className="h-full px-3 w-full outline-none bg-transparent text-slate-800 placeholder-slate-400"
-                    type="text"
+                    type="password"
                     value={form.password}
                     name="name"
                     fdprocessedid="5jip9u"

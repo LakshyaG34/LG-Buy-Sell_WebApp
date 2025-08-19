@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/navbar"
 import Footer from "./components/footer"
 import { Montserrat } from "next/font/google";
+import { AuthProvider } from "@/context/authContext";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -34,9 +35,11 @@ export default function RootLayout({ children }) {
         className={`${montserrat.className} antialiased min-h-screen flex flex-col
         bg-hero`}
       >
+        <AuthProvider>
         <Navbar/>
         {children}
         <Footer/>
+        </AuthProvider>
       </body>
     </html>
   );

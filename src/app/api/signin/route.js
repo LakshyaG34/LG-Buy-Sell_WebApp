@@ -1,6 +1,7 @@
-import {db} from "@/lib/db";
+import { db } from "@/lib/db";
 import User from "@/models/User";
 import bcrypt from "bcryptjs";
+import jwt from "jsonwebtoken";
 
 export async function POST(req) {
   try {
@@ -19,9 +20,25 @@ export async function POST(req) {
       });
     }
 
+    const token = jwt.sign(
+      { id: user._id, email: user.email },
+      process.env.JWT_SECRET,
+      {
+        expiresIn: "7d",
+      }
+    );
+
     return new Response(
       JSON.stringify({ message: "Signin successful", user }),
-      { status: 200 }
+      {
+        status: 200,
+        headers: {
+          "Set-Cookie": `token=${token}; HttpOnly; Path=/; Max-Age=${
+            7 * 24 * 60 * 60
+          }`,
+          "Content-Type": "application/json",
+        },
+      }
     );
   } catch (error) {
     return new Response(JSON.stringify({ error: error.message }), {
