@@ -71,10 +71,12 @@ const Navbar = () => {
       {isOpen && (
         <div className="md:hidden">
           <div className="flex flex-col items-center bg-white text-black ml-60 px-4 py-4 space-y-4">
-            <Link
-              href="/login"
+            {!isLoggedIn ? (
+              <>
+              <Link
+              href="/signin"
               className="border border-black rounded-full px-3 py-2"
-            >
+             >
               Login
             </Link>
             <Link
@@ -83,6 +85,9 @@ const Navbar = () => {
             >
               Signup
             </Link>
+            </>): (
+              <button onClick={handleLogOut} className="border border-black rounded-full px-3 py-2">Logout</button>
+            )}
           </div>
         </div>
       )}

@@ -1,45 +1,74 @@
 "use client";
-import React, { useState } from "react";
+import React, { use, useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AddItem() {
-  const [image, setImage] = useState("");
+  // const [image, setImage] = useState("");
+  const [file, setFile] = useState(null);
   const [price, setPrice] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
 
   const router = useRouter();
+  
+    const handleSubmit = async (e) => {
+      e.preventDefault();
+      setLoading(true);
+      setErr(null);
+      try{
 
-  const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setErr(null);
+      
+      const formData = new FormData();
+      formData.append("file", file);
 
-    try {
-      const res = await fetch("/api/items", {
+      const uploadRes = await fetch("/api/upload", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ image, price, description }),
+        body: formData,
       });
+      const { url } = await uploadRes.json();
 
-      if (!res.ok) {
-        const errorData = await res.json();
-        throw new Error(errorData.error || "Failed to add item");
-      }
-
-      setImage("");
-      setPrice("");
-      setDescription("");
-
-      // ✅ navigate properly
+      //create item with uploaded image url
+      await fetch("/api/items", {
+        method: "POST",
+        headers: {
+          "Content-type": "application/json",
+        },
+        body: JSON.stringify({ image: url, price, description }),
+      });
       router.push("/home");
-    } catch (err) {
+    }
+    catch(err)
+    {
       setErr(err.message);
-    } finally {
+    }finally{
       setLoading(false);
     }
-  };
+  }
+  
+  // try {
+  //   const res = await fetch("/api/items", {
+  //     method: "POST",
+  //     headers: { "Content-Type": "application/json" },
+  //     body: JSON.stringify({ image, price, description }),
+  //   });
+
+  //   if (!res.ok) {
+  //     const errorData = await res.json();
+  //     throw new Error(errorData.error || "Failed to add item");
+  //   }
+
+  //   setImage("");
+  //   setPrice("");
+  //   setDescription("");
+
+  //   // ✅ navigate properly
+  //   router.push("/home");
+  // } catch (err) {;
+  //   setErr(err.message);
+  // } finally {
+  //   setLoading(false);
+  // }
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
@@ -51,10 +80,10 @@ export default function AddItem() {
           <div>
             <label className="block text-sm font-medium mb-1">Image URL</label>
             <input
-              type="text"
-              value={image}
-              onChange={(e) => setImage(e.target.value)}
-              placeholder="https://example.com/item.jpg"
+              type="file"
+              // value={image}
+              onChange={(e) => setFile(e.target.files[0])}
+              // placeholder="https://example.com/item.jpg"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
@@ -73,7 +102,9 @@ export default function AddItem() {
             />
           </div>
           <div>
-            <label className="block text-sm font-medium mb-1">Description</label>
+            <label className="block text-sm font-medium mb-1">
+              Description
+            </label>
             <textarea
               type="text"
               value={description}
