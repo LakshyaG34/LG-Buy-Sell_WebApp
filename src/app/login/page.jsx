@@ -29,8 +29,10 @@ export default function SigninPage() {
     <section className="text-white h-full">
       <div className="min-h-screen flex flex-col gap-2 items-center justify-center py-10 mb-30">
         <span className="text-3xl">LOG IN</span>
-        <div className="border rounded-2xl border-transparent px-8 py-8 bg-gradient-to-r from-purple-600 via-purple-300 to-purple-200 shadow-[0_0_30px_15px_rgba(139,92,246,0.6)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)]
-  transition-shadow duration-300">
+        <div
+          className="border rounded-2xl border-transparent px-8 py-8 bg-gradient-to-r from-purple-600 via-purple-300 to-purple-200 shadow-[0_0_30px_15px_rgba(139,92,246,0.6)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)]
+  transition-shadow duration-300"
+        >
           <div className="flex flex-col justify-center items-center ">
             <form onSubmit={handleSubmit}>
               <div className="mt-4 relative flex flex-col items-center">

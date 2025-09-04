@@ -28,7 +28,7 @@ const Home = () =>
     const filteredItems = selectedCategory === "All" ? items : items.filter((item)=>item.category === selectedCategory);
     
     return(
-        <div className="flex flex-col gap-10 justify-center items-center min-h-screen py-10 px-6 bg-black/60">
+        <div className="flex flex-col gap-10 justify-center items-center min-h-screen py-10 px-6 bg-black/60 mb-20">
             <h1 className="text-4xl font-bold text-purple-600">AVAILABLE ITEMS :-</h1>
             <div className="flex flex-row flex-wrap justify-center gap-3 items-center">
                 {
@@ -53,8 +53,6 @@ const Home = () =>
                     )
                 }
             </div>
-            <Link href="/home/add" className="border border-rounded rounded-full px-2 py-2 cursor-pointer bg-purple-400">Add Items</Link>
-
         </div>
     )
 }

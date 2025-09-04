@@ -23,9 +23,10 @@ const Signup = () => {
     }
   };
   return (
-    <section className="bg-gradient-to-b from-[#fcfdfd] via-[#fffbee] to-[#f7f9ff] text-white h-full">
+    <section className="text-white h-full">
       <div className="min-h-screen flex items-center justify-center py-10 px-4">
-        <div className="w-full max-w-xl shadow-xl rounded-lg p-10">
+        <div className="border rounded-2xl border-transparent px-8 py-8 bg-gradient-to-r from-purple-600 via-purple-300 to-purple-200 shadow-[0_0_30px_15px_rgba(139,92,246,0.6)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)]
+  transition-shadow duration-300">
           <div className="flex flex-col justify-center items-center">
             <p className="text-black text-4xl text-bold">Let's get in touch</p>
             <p className="text-black text-sm py-2">

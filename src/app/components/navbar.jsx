@@ -39,19 +39,33 @@ const Navbar = () => {
             >
               B & S
             </Link>
+            <div className="hidden md:flex gap-4">
+              { 
+                isLoggedIn ? (
+                  <>
+                    <Link href="/" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,1),0_0_30px_rgba(236,72,153,0.8),0_0_60px_rgba(236,72,153,0.6)] 
+             transition duration-300 ease-in-out">Home</Link>
+                    <Link href="/home/add" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,1),0_0_30px_rgba(236,72,153,0.8),0_0_60px_rgba(236,72,153,0.6)] 
+             transition duration-300 ease-in-out">Sell Now</Link>
+                    <Link href="/home" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500 hover:shadow-[0_0_15px_rgba(236,72,153,1),0_0_30px_rgba(236,72,153,0.8),0_0_60px_rgba(236,72,153,0.6)] 
+             transition duration-300 ease-in-out">Items</Link>
+                  </>
+                  ) : ""
+              }
+            </div>
             <div className="hidden md:flex flex-row gap-3 px-4">
               {
                 !isLoggedIn ? (
                   <>
                     <Link
                       href="/login"
-                      className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 hover:bg-purple-900 hover:text-white hover:border-white"
+                      className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-purple-900 hover:text-white hover:shadow-[0_0_45px_rgba(139,92,246,0.7)]"
                     >
                       Login
                     </Link>
                     <Link
                       href="/signup"
-                      className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 hover:bg-purple-900 hover:text-white hover:border-white"
+                      className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-purple-900 hover:text-white hover:shadow-[0_0_45px_rgba(139,92,246,0.7)]"
                     >
                       Signup
                     </Link>
@@ -89,7 +103,12 @@ const Navbar = () => {
               Signup
             </Link>
             </>): (
+              <>
+              <Link href="/" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500">Home</Link>
+              <Link href="/home/add" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500">Sell Now</Link>
+              <Link href="/home" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500">Items</Link>
               <button onClick={handleLogOut} className="border border-black rounded-full px-3 py-2">Logout</button>
+              </>
             )}
           </div>
         </div>
