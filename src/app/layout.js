@@ -32,8 +32,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${montserrat.className} antialiased min-h-screen flex flex-col
-        bg-hero`}
+        className={`${montserrat.className} antialiased min-h-screen flex flex-col bg-black`}
       >
         <AuthProvider>
           <Navbar/>

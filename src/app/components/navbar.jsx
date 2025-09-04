@@ -30,10 +30,13 @@ const Navbar = () => {
   };
   return (
     <>
-      <nav className="bg-transparent text-black flex flex-row justify-between items-center w-full py-4">
+      <nav className="bg-transparent flex flex-row justify-between items-center w-full py-4">
         <div className="container max-w-8xl mx-auto">
           <div className="flex flex-row items-center justify-between">
-            <Link href="/" className="text-2xl font-bold italic">
+            <Link
+              href="/"
+              className="text-2xl font-bold italic text-purple-600 [text-shadow:0_0_20px_rgba(236,72,153,1),0_0_40px_rgba(236,72,153,0.8),0_0_80px_rgba(236,72,153,0.6),0_0_120px_rgba(236,72,153,0.4)]"
+            >
               B & S
             </Link>
             <div className="hidden md:flex flex-row gap-3 px-4">
@@ -41,7 +44,7 @@ const Navbar = () => {
                 !isLoggedIn ? (
                   <>
                     <Link
-                      href="/signin"
+                      href="/login"
                       className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 hover:bg-purple-900 hover:text-white hover:border-white"
                     >
                       Login
@@ -60,9 +63,9 @@ const Navbar = () => {
             </div>
             <div className="md:hidden px-4" onClick={toggleButton}>
               {isOpen ? (
-                <XMarkIcon className="h-6 w-6" />
+                <XMarkIcon className="h-6 w-6 text-purple-500" />
               ) : (
-                <Bars3Icon className="h-6 w-6" />
+                <Bars3Icon className="h-6 w-6 text-purple-500" />
               )}
             </div>
           </div>

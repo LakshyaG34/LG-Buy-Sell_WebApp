@@ -1,7 +1,6 @@
 import { NextResponse } from "next/server";
-import { jwtVerify } from "jose";
 
-const protectedRoutes = ["/items", "/home"];
+const protectedRoutes = ["/home", "/home/add"];
 const authRoutes = ["/login", "/signup"];
 
 export async function middleware(req) {

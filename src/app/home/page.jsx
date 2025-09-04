@@ -28,13 +28,13 @@ const Home = () =>
     const filteredItems = selectedCategory === "All" ? items : items.filter((item)=>item.category === selectedCategory);
     
     return(
-        <div className="flex flex-col gap-10 justify-center items-center min-h-screen py-10 px-6 bg-gray-50">
-            <h1 className="text-4xl italic">Available Items:-</h1>
+        <div className="flex flex-col gap-10 justify-center items-center min-h-screen py-10 px-6 bg-black/60">
+            <h1 className="text-4xl font-bold text-purple-600">AVAILABLE ITEMS :-</h1>
             <div className="flex flex-row flex-wrap justify-center gap-3 items-center">
                 {
                 categories.map((cat) => (
                     <button key={cat} onClick = {() => setSelectedCategory(cat)} className={`border rounded-full px-4 py-2 cursor-pointer transition ${selectedCategory === cat ? 
-                        "bg-blue-500 text-white" : "bg-gray-200 text-gray-700 hover:bg-blue-100"
+                        "border border-purple-600 bg-purple-600/60 text-white" : "bg-gray-200 text-white-700 hover:bg-purple-300"
                     }`}>
                         {cat}
                     </button>
@@ -49,11 +49,11 @@ const Home = () =>
                             <ItemCard key ={item._id} image = {item.image} price = {item.price} description={item.description} category={item.category}/>
                         ))
                     ) : (
-                        <p>No items Available under this category</p>
+                        <p className="text-purple-600">No items Available under this category</p>
                     )
                 }
             </div>
-            <Link href="/home/add" className="border border-rounded rounded-full px-2 py-2 cursor-pointer">Add Items</Link>
+            <Link href="/home/add" className="border border-rounded rounded-full px-2 py-2 cursor-pointer bg-purple-400">Add Items</Link>
 
         </div>
     )

@@ -30,7 +30,7 @@ const Product = () => {
                 height={250}
                 className="transform transition-transform duration-300 hover:-translate-y-2 hover:-transate-x-0"
               />
-              <p className="absolute bottom-2 left-2 backdrop-blur-3xl border border-transparent rounded-full bg-amber-100/10 text-black text-xs px-2 py-1">
+              <p className="absolute bottom-2 left-2 backdrop-blur-3xl border border-purple-600 rounded-full bg-purple-600/40 text-xs px-2 py-1 text-purple-300">
                 Starting from ${product.price}
               </p>
             </div>

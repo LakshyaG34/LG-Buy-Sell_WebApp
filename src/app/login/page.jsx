@@ -2,11 +2,12 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import { useAuth } from "@/context/authContext";
+import { FaEnvelope, FaLock } from "react-icons/fa";
 
 export default function SigninPage() {
   const [form, setForm] = useState({ email: "", password: "" });
   const router = useRouter();
-  const {login} = useAuth();
+  const { login } = useAuth();
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -25,33 +26,20 @@ export default function SigninPage() {
     }
   };
   return (
-    <section className="bg-gradient-to-b from-[#fcfdfd] via-[#fffbee] to-[#f7f9ff] text-white h-full">
-      <div className="min-h-screen flex items-center justify-center py-10 px-4">
-        <div className="w-full max-w-xl shadow-xl rounded-lg p-10">
-          <div className="flex flex-col justify-center items-center">
+    <section className="text-white h-full">
+      <div className="min-h-screen flex flex-col gap-2 items-center justify-center py-10 mb-30">
+        <span className="text-3xl">LOG IN</span>
+        <div className="border rounded-2xl border-transparent px-8 py-8 bg-gradient-to-r from-purple-600 via-purple-300 to-purple-200 shadow-[0_0_30px_15px_rgba(139,92,246,0.6)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)]
+  transition-shadow duration-300">
+          <div className="flex flex-col justify-center items-center ">
             <form onSubmit={handleSubmit}>
-              <div className="mt-4 relative">
-                <label className="font-medium text-sm text-black block mb-1">
-                  email
+              <div className="mt-4 relative flex flex-col items-center">
+                <label className="font-medium text-xl text-purple-500 block mb-1">
+                  E-mail
                   <span className="text-red-500"> *</span>
                 </label>
                 <div className="flex items-center h-12 px-4 rounded-xl border border-slate-300 bg-slate-50 focus-within:ring-2 focus-within:ring-indigo-400 transition-all relative">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-user w-5 h-5 text-slate-500"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <FaEnvelope className="text-black" />
                   <input
                     placeholder="Enter your Email"
                     required=""
@@ -66,28 +54,13 @@ export default function SigninPage() {
                   />
                 </div>
               </div>
-              <div className="mt-4 relative">
-                <label className="font-medium text-sm text-black block mb-1">
+              <div className="mt-4 relative flex flex-col items-center">
+                <label className="font-medium text-xl text-purple-500 block mb-1">
                   Password
                   <span className="text-red-500"> *</span>
                 </label>
                 <div className="flex items-center h-12 px-4 rounded-xl border border-slate-300 bg-slate-50 focus-within:ring-2 focus-within:ring-indigo-400 transition-all relative">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-user w-5 h-5 text-slate-500"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                  <FaLock className="text-black" />
                   <input
                     placeholder="Enter your Password"
                     required=""
@@ -104,7 +77,7 @@ export default function SigninPage() {
               </div>
               <button
                 type="submit"
-                className="text-black border rounded-full px-2 py-2 mt-4 cursor-pointer hover:bg-purple-900 hover:text-white hover:border-white"
+                className="text-black bg-white border rounded-full px-2 py-2 mt-4 cursor-pointer hover:bg-purple-900 hover:text-white hover:border-white"
               >
                 Submit
               </button>
