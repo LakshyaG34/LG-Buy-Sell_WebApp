@@ -20,9 +20,9 @@ export async function GET() {
 export async function POST(req) {
   try {
     await db();
-    const { image, price, description } = await req.json();
+    const { image, price, description, category } = await req.json();
 
-    if (!image || !price || !description) {
+    if (!image || !price || !description || !category) {
       return new Response(JSON.stringify({ error: "Missing field" }), {
         status: 400,
         headers: { "Content-Type": "application/json" },
@@ -34,6 +34,7 @@ export async function POST(req) {
       image,
       price: Number(price),
       description,
+      category
     });
     console.log(newItem);
     

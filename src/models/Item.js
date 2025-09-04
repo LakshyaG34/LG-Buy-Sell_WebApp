@@ -13,6 +13,10 @@ const itemSchema = new mongoose.Schema({
         type:String,
         required: true
     },
+    category:{
+        type:String,
+        required: true
+    },
 },{timestamps: true});
 
 const Item = mongoose.models.Item || mongoose.model("Item", itemSchema);

@@ -1,24 +1,24 @@
 "use client";
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 
 export default function AddItem() {
   // const [image, setImage] = useState("");
   const [file, setFile] = useState(null);
   const [price, setPrice] = useState("");
+  const [category, setCategory] = useState("");
   const [description, setDescription] = useState("");
   const [loading, setLoading] = useState(false);
   const [err, setErr] = useState(null);
+  const [open, setOpen] = useState(false);
 
   const router = useRouter();
-  
-    const handleSubmit = async (e) => {
-      e.preventDefault();
-      setLoading(true);
-      setErr(null);
-      try{
 
-      
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+    setLoading(true);
+    setErr(null);
+    try {
       const formData = new FormData();
       formData.append("file", file);
 
@@ -34,41 +34,24 @@ export default function AddItem() {
         headers: {
           "Content-type": "application/json",
         },
-        body: JSON.stringify({ image: url, price, description }),
+        body: JSON.stringify({ image: url, price, description, category }),
       });
       router.push("/home");
-    }
-    catch(err)
-    {
+    } catch (err) {
       setErr(err.message);
-    }finally{
+    } finally {
       setLoading(false);
     }
-  }
-  
-  // try {
-  //   const res = await fetch("/api/items", {
-  //     method: "POST",
-  //     headers: { "Content-Type": "application/json" },
-  //     body: JSON.stringify({ image, price, description }),
-  //   });
+  };
 
-  //   if (!res.ok) {
-  //     const errorData = await res.json();
-  //     throw new Error(errorData.error || "Failed to add item");
-  //   }
-
-  //   setImage("");
-  //   setPrice("");
-  //   setDescription("");
-
-  //   // ✅ navigate properly
-  //   router.push("/home");
-  // } catch (err) {;
-  //   setErr(err.message);
-  // } finally {
-  //   setLoading(false);
-  // }
+  const categories = [
+    "Electronics",
+    "Furniture",
+    "Books",
+    "Fashion",
+    "Vehicles",
+    "others",
+  ];
 
   return (
     <div className="min-h-screen flex items-center justify-center bg-gray-50 px-6">
@@ -81,9 +64,7 @@ export default function AddItem() {
             <label className="block text-sm font-medium mb-1">Image URL</label>
             <input
               type="file"
-              // value={image}
               onChange={(e) => setFile(e.target.files[0])}
-              // placeholder="https://example.com/item.jpg"
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
@@ -113,6 +94,29 @@ export default function AddItem() {
               className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
               required
             />
+          </div>
+          <div className="relative">
+            <label>Category</label>
+            <button
+              type="button"
+              onClick={() => setOpen(!open)}
+              className="bg-blue-600 text-white px-4 py-2 rounded-lg cursor-pointer"
+            >
+              {category || "Select Category"}
+            </button>
+            {open && (
+              <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10">
+                <ul>
+                  {categories.map((cat)=>(
+                    <li key = {cat}>
+                      <button type="button" onClick = {()=>{setCategory(cat); setOpen(false);}} className="w-full hover:bg-green-400 cursor-pointer">
+                        {cat}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
           </div>
 
           {/* Error */}

@@ -36,9 +36,9 @@ export default function RootLayout({ children }) {
         bg-hero`}
       >
         <AuthProvider>
-        <Navbar/>
-        {children}
-        <Footer/>
+          <Navbar/>
+          {children}
+          <Footer/>
         </AuthProvider>
       </body>
     </html>
