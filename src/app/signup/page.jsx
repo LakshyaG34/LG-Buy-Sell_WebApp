@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import toast from "react-hot-toast";
 
 const Signup = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -16,10 +17,11 @@ const Signup = () => {
       body: JSON.stringify(form),
     });
     if (res.ok) {
-      router.push("/signin");
+      toast.success("Signed Up Successfully");
+      router.push("/login");
     } else {
       const data = await res.json();
-      alert(data.error);
+      toast.error(data.error);
     }
   };
   return (

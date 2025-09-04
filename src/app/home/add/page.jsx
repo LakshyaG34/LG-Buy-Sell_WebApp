@@ -1,6 +1,7 @@
 "use client";
 import React, { useState } from "react";
 import { useRouter } from "next/navigation";
+import toast from "react-hot-toast";
 
 export default function AddItem() {
   // const [image, setImage] = useState("");
@@ -36,6 +37,7 @@ export default function AddItem() {
         },
         body: JSON.stringify({ image: url, price, description, category }),
       });
+      toast.success("Item Added Succesfully");
       router.push("/home");
     } catch (err) {
       setErr(err.message);

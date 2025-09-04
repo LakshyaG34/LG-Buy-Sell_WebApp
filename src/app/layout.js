@@ -4,6 +4,7 @@ import Navbar from "./components/navbar"
 import Footer from "./components/footer"
 import { Montserrat } from "next/font/google";
 import { AuthProvider } from "@/context/authContext";
+import { Toaster } from "react-hot-toast";
 
 // const geistSans = Geist({
 //   variable: "--font-geist-sans",
@@ -37,6 +38,7 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <Navbar/>
           {children}
+          <Toaster position="top-right" reverseOrder={false} />
           <Footer/>
         </AuthProvider>
       </body>

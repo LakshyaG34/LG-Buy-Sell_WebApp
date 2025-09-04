@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Link from "next/link";
 import {useAuth} from "@/context/authContext";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/outline";
+import toast from "react-hot-toast";
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -26,6 +27,7 @@ const Navbar = () => {
   const handleLogOut = async () => {
     await fetch("/api/logout", { method: "POST" });
     logout();
+    toast.success("Logged Out successfully!");
     window.location.href = "/";
   };
   return (
