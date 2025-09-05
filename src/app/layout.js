@@ -38,7 +38,23 @@ export default function RootLayout({ children }) {
         <AuthProvider>
           <Navbar/>
           {children}
-          <Toaster position="top-right" reverseOrder={false} />
+          <Toaster position="top-right" reverseOrder={false}  
+          toastOptions={{
+            success: {
+              style: {
+                background: "linear-gradient(90deg, #8b5cf6, #ec4899)", // purple → pink
+                color: "#fff",
+                fontWeight: "bold",
+                textShadow: "0 0 8px #ec4899, 0 0 12px #8b5cf6", // neon glow
+                borderRadius: "12px",
+                boxShadow: "0 0 20px rgba(236, 72, 153, 0.8)",
+              },
+              iconTheme: {
+                primary: "#ec4899", // pink
+                secondary: "#fff", // white icon background
+              },
+            },
+          }}/>
           <Footer/>
         </AuthProvider>
       </body>

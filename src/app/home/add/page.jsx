@@ -23,21 +23,26 @@ export default function AddItem() {
       const formData = new FormData();
       formData.append("file", file);
 
-      const uploadRes = await fetch("/api/upload", {
+      await toast.promise((async () =>{
+        const uploadRes = await fetch("/api/upload", {
         method: "POST",
         body: formData,
-      });
-      const { url } = await uploadRes.json();
+        });
+        const { url } = await uploadRes.json();
 
-      //create item with uploaded image url
-      await fetch("/api/items", {
-        method: "POST",
-        headers: {
-          "Content-type": "application/json",
-        },
-        body: JSON.stringify({ image: url, price, description, category }),
-      });
-      toast.success("Item Added Succesfully");
+        //create item with uploaded image url
+        await fetch("/api/items", {
+          method: "POST",
+          headers: {
+            "Content-type": "application/json",
+          },
+          body: JSON.stringify({ image: url, price, description, category }),
+        });
+      })(),{
+        loading: "Uploading & saving item...",
+        success: "Item added successfully!",
+        error: "Failed to add item. Try again.",
+      })
       router.push("/home");
     } catch (err) {
       setErr(err.message);
@@ -63,11 +68,17 @@ export default function AddItem() {
         <form onSubmit={handleSubmit} className="space-y-4">
           {/* Image URL Input */}
           <div>
-            <label className="block text-sm font-medium mb-1">Image URL</label>
+            <label className="block text-sm font-medium mb-1">Item Image</label>
+            <label
+              htmlFor="file-upload"
+              className="flex items-center justify-center w-full px-4 py-2 bg-purple-600 text-white rounded-lg cursor-pointer hover:bg-purple-700 transition"
+            >
+              {file ? file.name : "Upload Image"}
+            </label>
             <input
-              type="file"
+              type="file-upload"
               onChange={(e) => setFile(e.target.files[0])}
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+              className="hidden"
               required
             />
           </div>

@@ -13,21 +13,32 @@ export default function SigninPage() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
-    const res = await fetch("/api/signin", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify(form),
-    });
-
-    if (res.ok) {
-      login();
-      toast.success("Logged in successfully!");
-      router.push("/home");
-    } else {
-      const data = await res.json();
-      toast.error(data.error || "Login failed. Please try again.");
+    try{
+      await toast.promise((async()=>{
+        const res = await fetch("/api/signin", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(form),
+        });
+        const data = await res.json();
+        console.log(data);
+        if(!res.ok)
+        {
+          throw new Error(data.error || "Login failed")
+        }
+        login();
+        router.push("/home");
+        return data;
+    })(),{
+      success: (data) => `Welcome Back ${data.user.name}`,
+      error: (err) => `This just happened: ${err.toString()}`,
+    })
+    }catch(err)
+    {
+      console.log(err);
     }
-  };
+  }
+    
   return (
     <section className="text-white h-full">
       <div className="min-h-screen flex flex-col gap-6 items-center justify-center py-10 mb-30">
