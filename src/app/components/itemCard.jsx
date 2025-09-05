@@ -3,7 +3,7 @@ import Image from "next/image";
 
 const ItemCard = ({ image, price, description, category }) => {
   return (
-    <div className="relative w-64 h-80 rounded-xl overflow-hidden border border-purple-500 shadow-[0_0_25px_8px_rgba(168,85,247,0.8)] hover:shadow-[0_0_45px_20px_rgba(168,85,247,1)] transition-shadow duration-300">
+    <div className="relative w-64 h-80 rounded-xl overflow-hidden border border-purple-500 shadow-[0_0_30px_rgba(236,72,153,0.6),0_0_60px_rgba(139,92,246,0.4)] hover:shadow-[0_0_45px_20px_rgba(168,85,247,1)] transition-shadow duration-300">
       <Image
         src={image}
         alt="Item"

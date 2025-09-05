@@ -37,7 +37,7 @@ const Navbar = () => {
           <div className="flex flex-row items-center justify-between">
             <Link
               href="/"
-              className="text-2xl font-bold italic text-purple-600 [text-shadow:0_0_20px_rgba(236,72,153,1),0_0_40px_rgba(236,72,153,0.8),0_0_80px_rgba(236,72,153,0.6),0_0_120px_rgba(236,72,153,0.4)]"
+              className="text-3xl font-bold italic text-purple-600 [text-shadow:0_0_10px_rgba(236,72,153,1),0_0_20px_rgba(236,72,153,0.8),0_0_30px_rgba(236,72,153,0.6),0_0_50px_rgba(236,72,153,0.4)]"
             >
               B & S
             </Link>
