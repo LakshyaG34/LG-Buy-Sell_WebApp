@@ -2,8 +2,8 @@ import mongoose from "mongoose"
 
 const itemSchema = new mongoose.Schema({
     image:{
-        type:String,
-        required: true
+        data:Buffer,
+        contentType: String
     },
     price:{
         type:String,

@@ -46,7 +46,7 @@ const Home = () =>
                 {
                     filteredItems.length > 0 ? (
                         filteredItems.map((item) => (
-                            <ItemCard key ={item._id} image = {item.image} price = {item.price} description={item.description} category={item.category}/>
+                            <ItemCard key ={item._id} image = {`/api/items/${item._id}/image`} price = {item.price} description={item.description} category={item.category}/>
                         ))
                     ) : (
                         <p className="text-purple-600">No items Available under this category</p>
