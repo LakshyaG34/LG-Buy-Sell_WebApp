@@ -43,11 +43,11 @@ export default function SigninPage() {
     <section className="text-white h-full">
       <div className="min-h-screen flex flex-col gap-6 items-center justify-center py-10 mb-30">
         <span className="text-3xl">LOG IN</span>
-        <div className="border rounded-2xl border-transparent px-8 py-8 bg-gradient-to-r from-purple-500 via-pink-400 to-purple-500 shadow-[0_0_30px_15px_rgba(139,92,246,0.6)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)] transition-shadow duration-300">
+        <div className="border-2 border-purple-500 rounded-2xl px-8 py-8 bg-gradient-to-br from-purple-700/50 via-pink-500/30 to-purple-600/40 backdrop-blur-xl shadow-[0_0_30px_rgba(236,72,153,0.6),0_0_60px_rgba(139,92,246,0.4)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)] transition-shadow duration-300">
           <div className="flex flex-col justify-center items-center ">
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="flex flex-col items-center">
               <div className="mt-4 relative flex flex-col items-center">
-                <label className="font-medium text-xl text-purple-500 block mb-1">
+                <label className="font-medium text-xl text-purple-300 [text-shadow:0_0_10px_rgba(236,72,153,0.8),0_0_20px_rgba(139,92,246,0.6)] block mb-1">
                   E-mail
                   <span className="text-red-500"> *</span>
                 </label>
@@ -68,12 +68,12 @@ export default function SigninPage() {
                 </div>
               </div>
               <div className="mt-4 relative flex flex-col items-center ">
-                <label className="font-medium text-xl text-purple-500 block mb-1">
+                <label className="font-medium text-xl text-purple-300 [text-shadow:0_0_10px_rgba(236,72,153,0.8),0_0_20px_rgba(139,92,246,0.6)] block mb-1">
                   Password
                   <span className="text-red-500"> *</span>
                 </label>
                 <div className="flex items-center h-12 px-4 rounded-full bg-black/50 backdrop-blur-md [background:linear-gradient(#0a0a0a,#0a0a0a) padding-box,linear-gradient(to right,#8b5cf6,#ec4899,#3b82f6) border-box] focus-within:ring-2 focus-within:ring-pink-400 transition-all relative">
-                  <FaLock className="text-black" />
+                  <FaLock className="text-purple-500" />
                   <input
                     placeholder="Enter your Password"
                     required=""
@@ -90,9 +90,9 @@ export default function SigninPage() {
               </div>
               <button
                 type="submit"
-                className="text-black bg-white border rounded-full px-2 py-2 mt-4 cursor-pointer hover:bg-purple-900 hover:text-white hover:border-white"
+                className="text-white bg-pink-500/70 border border-transparent rounded-full px-2 py-2 mt-4 cursor-pointer hover:bg-pink-600 hover:shadow-[0_0_20px_rgba(236,72,153,0.9)] transition disabled:bg-gray-500"
               >
-                Submit
+                LogIn
               </button>
             </form>
           </div>

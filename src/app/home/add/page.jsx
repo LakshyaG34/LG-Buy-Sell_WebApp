@@ -23,26 +23,29 @@ export default function AddItem() {
       const formData = new FormData();
       formData.append("file", file);
 
-      await toast.promise((async () =>{
-        const uploadRes = await fetch("/api/upload", {
-        method: "POST",
-        body: formData,
-        });
-        const { url } = await uploadRes.json();
+      await toast.promise(
+        (async () => {
+          const uploadRes = await fetch("/api/upload", {
+            method: "POST",
+            body: formData,
+          });
+          const { url } = await uploadRes.json();
 
-        //create item with uploaded image url
-        await fetch("/api/items", {
-          method: "POST",
-          headers: {
-            "Content-type": "application/json",
-          },
-          body: JSON.stringify({ image: url, price, description, category }),
-        });
-      })(),{
-        loading: "Uploading & saving item...",
-        success: "Item added successfully!",
-        error: "Failed to add item. Try again.",
-      })
+          //create item with uploaded image url
+          await fetch("/api/items", {
+            method: "POST",
+            headers: {
+              "Content-type": "application/json",
+            },
+            body: JSON.stringify({ image: url, price, description, category }),
+          });
+        })(),
+        {
+          loading: "Uploading & saving item...",
+          success: "Item added successfully!",
+          error: "Failed to add item. Try again.",
+        }
+      );
       router.push("/home");
     } catch (err) {
       setErr(err.message);
@@ -62,67 +65,86 @@ export default function AddItem() {
 
   return (
     <div className="min-h-screen flex items-center justify-center px-6">
-      <div className="w-full max-w-md bg-white p-6 rounded-xl shadow-md">
-        <h1 className="text-xl font-bold mb-4">Add a New Item</h1>
+      <div className="w-full max-w-md p-6 rounded-2xl bg-gradient-to-br from-purple-700/50 via-pink-500/30 to-purple-600/40 backdrop-blur-xl border-2 border-purple-500 shadow-[0_0_30px_rgba(236,72,153,0.6),0_0_60px_rgba(139,92,246,0.4)]">
+        <h1 className="text-2xl font-bold mb-6 text-center text-purple-300 [text-shadow:0_0_10px_rgba(236,72,153,0.8),0_0_20px_rgba(139,92,246,0.6)]">
+          Add a New Item
+        </h1>
 
-        <form onSubmit={handleSubmit} className="space-y-4">
-          {/* Image URL Input */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* Image Upload */}
           <div>
-            <label className="block text-sm font-medium mb-1">Item Image</label>
+            <label className="block text-sm font-medium mb-2 text-purple-300">
+              Item Image
+            </label>
             <label
               htmlFor="file-upload"
-              className="flex items-center justify-center w-full px-4 py-2 bg-purple-600 text-white rounded-lg cursor-pointer hover:bg-purple-700 transition"
+              className="flex items-center justify-center w-full px-4 py-3 bg-purple-600/70 text-white rounded-xl cursor-pointer hover:bg-purple-700 transition shadow-[0_0_15px_rgba(236,72,153,0.6)] hover:shadow-[0_0_30px_rgba(236,72,153,0.9)]"
             >
               {file ? file.name : "Upload Image"}
             </label>
             <input
-              type="file-upload"
+              id="file-upload"
+              type="file"
               onChange={(e) => setFile(e.target.files[0])}
               className="hidden"
               required
             />
           </div>
 
-          {/* Price Input */}
+          {/* Price */}
           <div>
-            <label className="block text-sm font-medium mb-1">Price (₹)</label>
+            <label className="block text-sm font-medium mb-2 text-purple-300">
+              Price (₹)
+            </label>
             <input
               type="number"
               value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="500"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+              className="w-full px-3 py-2 rounded-xl bg-black/40 backdrop-blur-md border-2 border-purple-500 placeholder-purple-300 text-white focus:border-pink-400 focus:ring-2 focus:ring-pink-400 outline-none transition"
               required
             />
           </div>
+
+          {/* Description */}
           <div>
-            <label className="block text-sm font-medium mb-1">
+            <label className="block text-sm font-medium mb-2 text-purple-300">
               Description
             </label>
             <textarea
-              type="text"
               value={description}
               onChange={(e) => setDescription(e.target.value)}
-              placeholder="Demo"
-              className="w-full border rounded-lg px-3 py-2 focus:outline-none focus:ring focus:ring-blue-300"
+              placeholder="Describe your item..."
+              className="w-full px-3 py-2 rounded-xl bg-black/40 backdrop-blur-md border-2 border-purple-500 placeholder-purple-300 text-white focus:border-pink-400 focus:ring-2 focus:ring-pink-400 outline-none transition"
               required
             />
           </div>
+
+          {/* Category */}
           <div className="relative">
-            <label>Category</label>
+            <label className="block text-sm font-medium mb-2 text-purple-300">
+              Category
+            </label>
             <button
               type="button"
               onClick={() => setOpen(!open)}
-              className="bg-blue-600 text-white px-4 py-2 rounded-lg cursor-pointer"
+              className="w-full px-4 py-2 rounded-full bg-purple-600/50 border-2 border-purple-400 text-pink-300 backdrop-blur-md hover:border-pink-400 hover:shadow-[0_0_20px_rgba(236,72,153,0.8)] transition"
             >
               {category || "Select Category"}
             </button>
             {open && (
-              <div className="absolute right-0 mt-2 w-40 bg-white border rounded-lg shadow-lg z-10">
+              <div className="absolute mt-2 w-full bg-purple-900/90 border border-purple-500 rounded-xl shadow-[0_0_20px_rgba(236,72,153,0.7)] z-10">
                 <ul>
-                  {categories.map((cat)=>(
-                    <li key = {cat}>
-                      <button type="button" onClick = {()=>{setCategory(cat); setOpen(false);}} className="w-full hover:bg-green-400 cursor-pointer">
+                  {categories.map((cat) => (
+                    <li key={cat}>
+                      <button
+                        type="button"
+                        onClick={() => {
+                          setCategory(cat);
+                          setOpen(false);
+                        }}
+                        className="w-full text-left px-3 py-2 hover:bg-pink-500/50 text-white rounded-lg transition"
+                      >
                         {cat}
                       </button>
                     </li>
@@ -133,13 +155,13 @@ export default function AddItem() {
           </div>
 
           {/* Error */}
-          {err && <p className="text-red-500 text-sm">{err}</p>}
+          {err && <p className="text-red-400 text-sm">{err}</p>}
 
-          {/* Submit Button */}
+          {/* Submit */}
           <button
             type="submit"
             disabled={loading}
-            className="w-full bg-blue-600 text-white py-2 rounded-lg font-semibold hover:bg-blue-700 transition disabled:bg-gray-400"
+            className="w-full py-3 rounded-full bg-pink-500/70 text-white font-bold hover:bg-pink-600 hover:shadow-[0_0_20px_rgba(236,72,153,0.9)] transition disabled:bg-gray-500"
           >
             {loading ? "Adding..." : "Add Item"}
           </button>

@@ -73,7 +73,7 @@ const Navbar = () => {
                     </Link>
                   </>
                 ) : (
-                  <button onClick={handleLogOut} className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 hover:bg-purple-900 hover:text-white hover:border-white">Logout</button>
+                  <button onClick={handleLogOut} className="border border-purple-900 bg-indigo-100 rounded-full px-4 py-2 transition duration-300 ease-in-out hover:bg-purple-900 hover:text-white hover:shadow-[0_0_45px_rgba(139,92,246,0.7)] cursor-pointer">Logout</button>
                 )
               }
             </div>

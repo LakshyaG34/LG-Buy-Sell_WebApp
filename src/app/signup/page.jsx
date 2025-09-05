@@ -4,6 +4,8 @@ import React, { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
 import toast from "react-hot-toast";
+import { FaEnvelope, FaLock, FaUser } from "react-icons/fa";
+
 
 const Signup = () => {
   const [form, setForm] = useState({ name: "", email: "", password: "" });
@@ -27,44 +29,28 @@ const Signup = () => {
   return (
     <section className="text-white h-full">
       <div className="min-h-screen flex items-center justify-center py-10 px-4">
-        <div className="border rounded-2xl border-transparent px-8 py-8 bg-gradient-to-r from-purple-600 via-purple-300 to-purple-200 shadow-[0_0_30px_15px_rgba(139,92,246,0.6)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)]
-  transition-shadow duration-300">
+        <div className="border-2 border-purple-500 rounded-2xl px-8 py-8 bg-gradient-to-br from-purple-700/50 via-pink-500/30 to-purple-600/40 backdrop-blur-xl shadow-[0_0_30px_rgba(236,72,153,0.6),0_0_60px_rgba(139,92,246,0.4)] hover:shadow-[0_0_60px_30px_rgba(139,92,246,0.8)] transition-shadow duration-300">
           <div className="flex flex-col justify-center items-center">
-            <p className="text-black text-4xl text-bold">Let's get in touch</p>
-            <p className="text-black text-sm py-2">
+            <p className="text-4xl text-bold text-purple-300 [text-shadow:0_0_10px_rgba(236,72,153,0.8),0_0_20px_rgba(139,92,246,0.6)]">Let's get in touch</p>
+            <p className="text-purple-200 text-sm py-2">
               Already have an account?
-              <Link href="/login" className="text-blue-900">
+              <Link href="/login" className="text-pink-500">
                 {" "}
                 Login Here
               </Link>
             </p>
-            <form onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit} className="flex flex-col items-center">
               <div className="mt-4 relative">
-                <label className="font-medium text-sm text-black block mb-1">
+                <label className="font-medium text-sm text-purple-200 block mb-1">
                   Name
                   <span className="text-red-500"> *</span>
                 </label>
-                <div className="flex items-center h-12 px-4 rounded-xl border border-slate-300 bg-slate-50 focus-within:ring-2 focus-within:ring-indigo-400 transition-all relative">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-user w-5 h-5 text-slate-500"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                <div className="flex items-center h-12 px-4 rounded-full bg-black/50 backdrop-blur-md [background:linear-gradient(#0a0a0a,#0a0a0a) padding-box,linear-gradient(to right,#8b5cf6,#ec4899,#3b82f6) border-box] focus-within:ring-2 focus-within:ring-pink-400 transition-all relative">
+                  <FaUser className="text-purple-500"/>
                   <input
                     placeholder="Enter your full name"
                     required=""
-                    className="h-full px-3 w-full outline-none bg-transparent text-slate-800 placeholder-slate-400"
+                    className="h-full px-3 w-full outline-none bg-transparent placeholder-[#22d3ee] [&::placeholder]:opacity-100 [&::placeholder]:text-shadow-[0_0_3px_#22d3ee,0_0_6px_#8b5cf6"
                     type="text"
                     value={form.name}
                     name="name"
@@ -74,31 +60,16 @@ const Signup = () => {
                 </div>
               </div>
               <div className="mt-4 relative">
-                <label className="font-medium text-sm text-black block mb-1">
-                  email
+                <label className="font-medium text-sm text-purple-200 block mb-1">
+                  E-mail
                   <span className="text-red-500"> *</span>
                 </label>
-                <div className="flex items-center h-12 px-4 rounded-xl border border-slate-300 bg-slate-50 focus-within:ring-2 focus-within:ring-indigo-400 transition-all relative">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-user w-5 h-5 text-slate-500"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                <div className="flex items-center h-12 px-4 rounded-full bg-black/50 backdrop-blur-md [background:linear-gradient(#0a0a0a,#0a0a0a) padding-box,linear-gradient(to right,#8b5cf6,#ec4899,#3b82f6) border-box] focus-within:ring-2 focus-within:ring-pink-400 transition-all relative">
+                  <FaEnvelope className="text-purple-500"/>
                   <input
                     placeholder="Enter your Email"
                     required=""
-                    className="h-full px-3 w-full outline-none bg-transparent text-slate-800 placeholder-slate-400"
+                    className="h-full px-3 w-full outline-none bg-transparent placeholder-[#22d3ee] [&::placeholder]:opacity-100 [&::placeholder]:text-shadow-[0_0_3px_#22d3ee,0_0_6px_#8b5cf6"
                     type="text"
                     value={form.email}
                     name="name"
@@ -110,31 +81,16 @@ const Signup = () => {
                 </div>
               </div>
               <div className="mt-4 relative">
-                <label className="font-medium text-sm text-black block mb-1">
+                <label className="font-medium text-sm text-purple-200 block mb-1">
                   Password
                   <span className="text-red-500"> *</span>
                 </label>
-                <div className="flex items-center h-12 px-4 rounded-xl border border-slate-300 bg-slate-50 focus-within:ring-2 focus-within:ring-indigo-400 transition-all relative">
-                  <svg
-                    xmlns="http://www.w3.org/2000/svg"
-                    width="24"
-                    height="24"
-                    viewBox="0 0 24 24"
-                    fill="none"
-                    stroke="currentColor"
-                    strokeWidth="2"
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    className="lucide lucide-user w-5 h-5 text-slate-500"
-                    aria-hidden="true"
-                  >
-                    <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2"></path>
-                    <circle cx="12" cy="7" r="4"></circle>
-                  </svg>
+                <div className="flex items-center h-12 px-4 rounded-full bg-black/50 backdrop-blur-md [background:linear-gradient(#0a0a0a,#0a0a0a) padding-box,linear-gradient(to right,#8b5cf6,#ec4899,#3b82f6) border-box] focus-within:ring-2 focus-within:ring-pink-400 transition-all relative">
+                  <FaLock className="text-purple-500"/>
                   <input
                     placeholder="Enter your Password"
                     required=""
-                    className="h-full px-3 w-full outline-none bg-transparent text-slate-800 placeholder-slate-400"
+                    className="h-full px-3 w-full outline-none bg-transparent placeholder-[#22d3ee] [&::placeholder]:opacity-100 [&::placeholder]:text-shadow-[0_0_3px_#22d3ee,0_0_6px_#8b5cf6"
                     type="text"
                     value={form.password}
                     name="name"
@@ -145,8 +101,8 @@ const Signup = () => {
                   />
                 </div>
               </div>
-              <button type="submit" className="text-black border rounded-full px-2 py-2 mt-4 cursor-pointer hover:bg-purple-900 hover:text-white hover:border-white">
-                Submit
+              <button type="submit" className="text-white bg-pink-500/70 border border-transparent rounded-full px-2 py-2 mt-4 cursor-pointer hover:bg-pink-600 hover:shadow-[0_0_20px_rgba(236,72,153,0.9)] transition disabled:bg-gray-500">
+                Register
               </button>
             </form>
           </div>
