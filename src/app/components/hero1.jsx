@@ -4,7 +4,7 @@ import Link from "next/link"
 const Hero1 = () => {
   return (
     <div className="flex flex-col justify-center items-center">
-      <p className="animate-bounce text-4xl font-bold mt-4 text-purple-400">🛍️ Lakshya Buy and Sell</p>
+      <p className="animate-bounce text-4xl font-bold mt-4 text-center text-purple-400">🛍️ Lakshya Buy and Sell</p>
       <div className="flex flex-col gap-6 items-center">
         <p className = "text-base mt-4 py-4 text-center max-w-[20ch] text-purple-300">
           The smart way to buy, sell & grow. Built by hustlers. Trusted by doers.
