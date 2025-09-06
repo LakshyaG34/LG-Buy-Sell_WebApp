@@ -91,10 +91,10 @@ const Navbar = () => {
       <div className="md:hidden relative">
         <div
           className={`
-            absolute top-0 right-0 w-48
+            absolute right-0 mt-2 w-48
             transform transition-all duration-300 ease-in-out
             flex flex-col items-center bg-white/10 backdrop-blur-md border border-purple-400 rounded-lg px-4 py-4 space-y-4 shadow-lg z-50
-            ${isOpen ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0 pointer-events-none"}
+            ${isOpen ? "translate-y-0 opacity-100" : "-translate-y-2 opacity-0 pointer-events-none"}
           `}
         >
           {!isLoggedIn ? (

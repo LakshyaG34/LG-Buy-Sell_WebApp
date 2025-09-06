@@ -1,7 +1,7 @@
 import { db } from "@/lib/db";
 import Item from "@/models/Item";
 
-export async function GET(req, context) {
+export async function GET(context) {
   try {
     await db();
     const { id } = await context.params;
