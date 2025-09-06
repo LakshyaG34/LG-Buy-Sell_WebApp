@@ -1,21 +1,21 @@
 import { db } from "@/lib/db";
 import Item from "@/models/Item";
 
-// export async function GET() {
-//   try {
-//     await db();
-//     const items = await Item.find({});
-//     return new Response(JSON.stringify(items), {
-//       status: 200,
-//       headers: { "Content-Type": "application/json" },
-//     });
-//   } catch (error) {
-//     return new Response(JSON.stringify({ error: "Internal server error" }), {
-//       status: 500,
-//       headers: { "Content-Type": "application/json" },
-//     });
-//   }
-// }
+export async function GET() {
+  try {
+    await db();
+    const items = await Item.find({});
+    return new Response(JSON.stringify(items), {
+      status: 200,
+      headers: { "Content-Type": "application/json" },
+    });
+  } catch (error) {
+    return new Response(JSON.stringify({ error: "Internal server error" }), {
+      status: 500,
+      headers: { "Content-Type": "application/json" },
+    });
+  }
+}
 
 async function streamToBuffer(stream) {
   const chunks = [];
