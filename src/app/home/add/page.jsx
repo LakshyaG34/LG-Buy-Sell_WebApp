@@ -97,8 +97,8 @@ export default function AddItem() {
               Price (₹)
             </label>
             <input
-              type="number"
-              value={text}
+              type="text"
+              value={price}
               onChange={(e) => setPrice(e.target.value)}
               placeholder="500"
               className="w-full px-3 py-2 rounded-xl bg-black/40 backdrop-blur-md border-2 border-purple-500 placeholder-purple-300 text-white focus:border-pink-400 focus:ring-2 focus:ring-pink-400 outline-none transition"
