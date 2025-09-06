@@ -16,43 +16,37 @@ export default function AddItem() {
   const router = useRouter();
 
   const handleSubmit = async (e) => {
-    e.preventDefault();
-    setLoading(true);
-    setErr(null);
-    try {
-      const formData = new FormData();
-      formData.append("file", file);
+  e.preventDefault();
+  setLoading(true);
+  setErr(null);
 
-      await toast.promise(
-        (async () => {
-          const uploadRes = await fetch("/api/upload", {
-            method: "POST",
-            body: formData,
-          });
-          const { url } = await uploadRes.json();
+  try {
+    const formData = new FormData();
+    formData.append("image", file);       // 👈 must match backend
+    formData.append("price", price);
+    formData.append("description", description);
+    formData.append("category", category);
 
-          //create item with uploaded image url
-          await fetch("/api/items", {
-            method: "POST",
-            headers: {
-              "Content-type": "application/json",
-            },
-            body: JSON.stringify({ image: url, price, description, category }),
-          });
-        })(),
-        {
-          loading: "Uploading & saving item...",
-          success: "Item added successfully!",
-          error: "Failed to add item. Try again.",
-        }
-      );
-      router.push("/home");
-    } catch (err) {
-      setErr(err.message);
-    } finally {
-      setLoading(false);
-    }
-  };
+    await toast.promise(
+      fetch("/api/items", {
+        method: "POST",
+        body: formData,
+      }),
+      {
+        loading: "Uploading & saving item...",
+        success: "Item added successfully!",
+        error: "Failed to add item. Try again.",
+      }
+    );
+
+    router.push("/home");
+  } catch (err) {
+    setErr(err.message);
+  } finally {
+    setLoading(false);
+  }
+};
+
 
   const categories = [
     "Electronics",
