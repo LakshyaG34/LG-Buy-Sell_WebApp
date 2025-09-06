@@ -87,34 +87,54 @@ const Navbar = () => {
           </div>
         </div>
       </nav>
-      {isOpen && (
-        <div className="md:hidden">
-          <div className="flex flex-col items-center bg-white text-black ml-60 px-4 py-4 space-y-4">
-            {!isLoggedIn ? (
-              <>
+      {/* {isOpen && ( */}
+      <div className="md:hidden relative">
+        <div
+          className={`
+            absolute top-0 right-0 w-48
+            transform transition-all duration-300 ease-in-out
+            flex flex-col items-center bg-white/10 backdrop-blur-md border border-purple-400 rounded-lg px-4 py-4 space-y-4 shadow-lg
+            ${isOpen ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0 pointer-events-none"}
+          `}
+        >
+          {!isLoggedIn ? (
+            <>
               <Link
-              href="/signin"
-              className="border border-black rounded-full px-3 py-2"
-             >
-              Login
-            </Link>
-            <Link
-              href="/signup"
-              className="border border-black rounded-full px-3 py-2"
-            >
-              Signup
-            </Link>
-            </>): (
-              <>
-              <Link href="/" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500">Home</Link>
-              <Link href="/home/add" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500">Sell Now</Link>
-              <Link href="/home" className="border border-rounded rounded-full px-2 py-1 cursor-pointer bg-purple-600/50 border-purple-500 text-pink-500">Items</Link>
-              <button onClick={handleLogOut} className="border border-black rounded-full px-3 py-2">Logout</button>
-              </>
-            )}
-          </div>
+                href="/login"
+                className="border border-purple-500/60 text-purple-400 rounded-full px-3 py-2"
+              >
+                Login
+              </Link>
+              <Link
+                href="/signup"
+                className="border border-purple-500/60 text-purple-400 rounded-full px-3 py-2"
+              >
+                Signup
+              </Link>
+            </>
+          ) : (
+            <>
+              <Link href="/" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500">
+                Home
+              </Link>
+              <Link href="/home/add" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500">
+                Sell Now
+              </Link>
+              <Link href="/home" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500">
+                Items
+              </Link>
+              <button
+                onClick={handleLogOut}
+                className="border border-black rounded-full px-3 py-2"
+              >
+                Logout
+              </button>
+            </>
+          )}
         </div>
-      )}
+      </div>
+
+      {/* )} */}
     </>
   );
 };
