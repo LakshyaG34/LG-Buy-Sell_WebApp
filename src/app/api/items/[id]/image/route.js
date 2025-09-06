@@ -1,10 +1,10 @@
 import { db } from "@/lib/db";
 import Item from "@/models/Item";
 
-export async function GET(req, { params }) {
+export async function GET(req, context) {
   try {
     await db();
-    const { id } = params;
+    const { id } = await context.params;
 
     const item = await Item.findById(id);
     if (!item || !item.image?.data) {
