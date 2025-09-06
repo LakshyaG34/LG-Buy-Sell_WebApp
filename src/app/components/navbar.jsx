@@ -93,7 +93,7 @@ const Navbar = () => {
           className={`
             absolute top-0 right-0 w-48
             transform transition-all duration-300 ease-in-out
-            flex flex-col items-center bg-white/10 backdrop-blur-md border border-purple-400 rounded-lg px-4 py-4 space-y-4 shadow-lg
+            flex flex-col items-center bg-white/10 backdrop-blur-md border border-purple-400 rounded-lg px-4 py-4 space-y-4 shadow-lg z-50
             ${isOpen ? "translate-x-0 opacity-100" : "translate-x-5 opacity-0 pointer-events-none"}
           `}
         >
@@ -101,31 +101,31 @@ const Navbar = () => {
             <>
               <Link
                 href="/login"
-                className="border border-purple-500/60 text-purple-400 rounded-full px-3 py-2"
+                className="border border-purple-500/60 text-purple-400 rounded-full px-3 py-2 cursor-pointer"
               >
                 Login
               </Link>
               <Link
                 href="/signup"
-                className="border border-purple-500/60 text-purple-400 rounded-full px-3 py-2"
+                className="border border-purple-500/60 text-purple-400 rounded-full px-3 py-2 cursor-pointer"
               >
                 Signup
               </Link>
             </>
           ) : (
             <>
-              <Link href="/" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500">
+              <Link href="/" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500 cursor-pointer">
                 Home
               </Link>
-              <Link href="/home/add" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500">
+              <Link href="/home/add" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500 cursor-pointer">
                 Sell Now
               </Link>
-              <Link href="/home" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500">
+              <Link href="/home" className="border rounded-full px-2 py-1 bg-purple-600/50 border-purple-500 text-pink-500 cursor-pointer">
                 Items
               </Link>
               <button
                 onClick={handleLogOut}
-                className="border border-black rounded-full px-3 py-2"
+                className="border border-black rounded-full px-3 py-2 cursor-pointer"
               >
                 Logout
               </button>
