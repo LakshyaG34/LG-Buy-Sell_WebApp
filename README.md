@@ -1,36 +1,31 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+🎓 Student Buy & Sell App
 
-## Getting Started
+A full-stack marketplace app built for college students, where seniors, graduates, and affiliated officials can list items they want to sell, and others can browse and buy them with ease.
 
-First, run the development server:
+This project is designed to make student life easier by providing a campus-exclusive platform for exchanging goods — from books and notes 📚 to electronics 💻 and furniture 🛋️.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+✨ Features
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+✅ User Authentication – Secure login & signup with MongoDB.
+✅ Add & Manage Listings – Sellers can post, edit, and delete items.
+✅ Browse & Buy – Students can explore listings and connect with sellers.
+✅ Responsive Design – Fully compatible with both desktop & mobile.
+✅ Modern UI – Styled with TailwindCSS for a clean and attractive look.
+✅ Next.js Full Stack – Used for both frontend and backend, ensuring fast performance.
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🛠️ Tech Stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Frontend & Backend: Next.js⚡
 
-## Learn More
+Database: MongoDB🍃
 
-To learn more about Next.js, take a look at the following resources:
+Styling: TailwindCSS🎨
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+Hosting: Vercel / Any other deployment service ☁️
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+📸 Screenshots
+Desktop View	
+<img width="1879" height="805" alt="Screenshot 2025-09-19 230111" src="https://github.com/user-attachments/assets/59058570-ecc6-47c6-854e-ad02864051c4" />
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Mobile View
+![homeMobile](https://github.com/user-attachments/assets/e715e678-186d-407d-b6e7-5f04a97faa48)
