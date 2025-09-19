@@ -23,9 +23,13 @@ Styling: TailwindCSS🎨
 
 Hosting: Vercel / Any other deployment service ☁️
 
-📸 Screenshots
-Desktop View	
+📸 Screenshots:-
 <img width="1879" height="805" alt="Screenshot 2025-09-19 230111" src="https://github.com/user-attachments/assets/59058570-ecc6-47c6-854e-ad02864051c4" />
 
-Mobile View
-![homeMobile](https://github.com/user-attachments/assets/e715e678-186d-407d-b6e7-5f04a97faa48)
+![homeMobile](https://github.com/user-attachments/assets/61d606b2-03ab-4861-870f-6891d2a4cd74)
+
+🧑‍💻 Author
+
+Lakshya Goyal
+
+🔥 A one-stop marketplace built for students, by students!
